@@ -1,0 +1,36 @@
+{% load i18n navbar dropdowns %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar {% block nav_display %}{% endblock %}">
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="{% url 'hero:home' %}">
+            <strong class="blue-text text-uppercase">Nawoka</strong>
+        </a>
+
+        <!-- Hamburger -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Offcanvas -->
+            {# {% include "offcanvas.html" %} #}
+
+            <!-- Drop large -->
+            {% test_dropdown %}
+            
+            <!-- Right -->
+            {% icon_links "shop:search" "cart:checkout" "accounts:login" "accounts:logout" %}
+
+            {% if request.user.is_admin %}
+                <ul class="navbar-nav {% if extra_class%}{{ extra_class }}{% endif %}">
+                    <li class="nav-item">
+                        <a href="{% url 'admin:index' %}" target="_blank" class="nav-link waves-effect">
+                            <i class="fa fa-flag"></i>
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>

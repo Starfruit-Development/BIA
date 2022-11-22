@@ -1,0 +1,56 @@
+{% load i18n %}
+
+<script>
+    Vue.component("form-component", {
+        props: ["id", "position"],
+        name: "Form",
+        delimiters: ["[[", "]]"],
+        template: `
+        <form @submit.prevent="submitform" method="POST" :id="id">
+            {% csrf_token %}
+
+            <slot></slot>
+
+            <div class="form-group">
+                <input type="hidden" name="position" :value="position">
+            </div>
+
+            <div class="form-row">
+                <div class="col-12 text-right">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa fa-check mr-3"></i>
+                        {% trans 'Valider' %}
+                    </button>
+                </div>
+            </div>
+        </form>
+        `,
+        methods: {
+            submitform: function () {
+                this.$el.submit()
+            }
+        }
+    })
+
+    Vue.component("confirm-button", {
+        props: ["state", "submitted"],
+        name: "ConfirmButton",
+        delimiters: ["[[", "]]"],
+        template: `
+        <button @click="sendconfirmation" class="btn btn-md btn-primary" :class="{'disabled': !state}">
+            <span v-if="!submitted">
+                <i class="fa fa-check mr-3"></i>
+                <slot></slot>
+            </span>
+
+            <span v-else class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        </button>
+        `,
+        methods: {
+            sendconfirmation: function () {
+                this.$emit("sendconfirmation")
+            }
+        }
+    })
+
+</script>

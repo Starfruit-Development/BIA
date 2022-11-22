@@ -1,0 +1,62 @@
+{% load i18n %}
+
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+    {# <span class="navbar-brand">{% trans "Categories" %} :</span> #}
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+        <ul class="navbar-nav mr-auto" id="filter-bar">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ request.path }}?category=all" data-category="all">
+                    {% trans "Tout" %}
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ request.path }}?category=promos" data-category="promos">
+                    {% trans "Promotions" %}
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ request.path }}?category=favorites" data-category="favorites">
+                    {% trans "Favoris" %}
+                </a>
+            </li>
+
+            <li class="white-text">
+                <a href class="nav-link disabled ml-4" aria-disabled="true">
+                    {{ products.count }} produit{{ products.count|pluralize }}
+                </a>
+            </li>
+        </ul>
+
+        <div class="navbar-nav">
+            <sorting-component @dosort="applysort" :products="products" inline-template>
+                <select @change="selectedsort=parseInt($el.value), dosort(byprice)" class="browser-default custom-select" id="sorting-selection">
+                    <option v-for="(item, index) in items" :key="item.id" :value="item.value">
+                        [[ item.name ]]
+                    </option>
+                </select>
+            </sorting-component>
+        </div>
+        
+        <div class="change-grid">
+            <button @click="togglegrid()" class="btn btn-md btn-transparent white-text z-depth-0">
+                <i class="fa fa-th fa-1x"></i>
+            </button>
+        </div>
+        
+        {% comment "Running a search on the website" %}
+            <form action="{% url 'search_products' %}" class="form-inline">
+                <div class="md-form my-0">
+                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Rechercher" aria-label="search">
+                </div>
+            </form>            
+        {% endcomment %}
+    </div>
+</nav>

@@ -1,0 +1,11 @@
+{% load i18n shop %}
+
+<div class="rating">
+    <div>
+        {% stars reviews_avg.rating__avg %}        
+    </div>
+
+    <span class="review-no">
+        {{ reviews.count }} {% trans "avis" %}
+    </span>
+</div>

@@ -1,0 +1,46 @@
+{% load i18n %}
+
+{% if product.active %}
+    <cart-actions-interface :product="product" :colors="colors" :sizes="sizes" :isdisabled="isdisabled" inline-template>
+        <div class="product-actions">
+            <div class="details-selection">
+                <!-- Color -->
+                <div class="form-group">
+                    <color-selector @selectcolor="doselection" :colors="colors" />
+                </div>
+        
+                <!-- Size -->
+                <div class="form-group">
+                    <size-selector @selectsize="doselection" :sizes="sizes" />
+                </div>
+
+                <div class="delivery mt-3 mb-3">
+                    <a href="{% url 'shop:size_guide' %}" target="_blank">
+                        {% trans "Guide des tailles" %}**
+                    </a>
+                </div>                    
+            </div>
+            
+            <div class="actions">
+                <button-actions @addtocart="cartbuttonclicked"
+                    :product="product" :details="details" 
+                        :disabled="isdisabled" :likesdisabled="'{{ has_liked }}'" />
+            </div>
+        </div>
+    </cart-actions-interface>
+
+
+    <!-- One click -->
+    <div class="mt-3">
+        <!-- Google Pay -->
+        <div class="form-group">
+            <div id="google-pay-button"></div>
+        </div>
+    </div>        
+{% else %}
+    <div class="card">
+        <div class="card-body red lighten-1 text-white text-center font-weight-bold">
+            {% trans "Ce produit n'est pas actif" %}
+        </div>
+    </div>
+{% endif %}
