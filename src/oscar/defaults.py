@@ -1,9 +1,9 @@
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
-OSCAR_SHOP_NAME = 'BIA'
+OSCAR_SHOP_NAME = 'Oscar'
 OSCAR_SHOP_TAGLINE = ''
-OSCAR_HOMEPAGE = reverse_lazy('home:index')
+OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
 
 # Dynamic class loading
 OSCAR_DYNAMIC_CLASS_LOADER = 'oscar.core.loading.default_class_loader'
@@ -21,7 +21,7 @@ OSCAR_RECENTLY_VIEWED_COOKIE_SECURE = False
 OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 
 # Currency
-OSCAR_DEFAULT_CURRENCY = '€'
+OSCAR_DEFAULT_CURRENCY = 'GBP'
 
 # Paths
 OSCAR_IMAGE_FOLDER = 'images/products/%Y/%m/'
@@ -29,7 +29,7 @@ OSCAR_DELETE_IMAGE_FILES = True
 
 # Copy this image from oscar/static/img to your MEDIA_ROOT folder.
 # It needs to be there so Sorl can resize it.
-OSCAR_MISSING_IMAGE_URL = 'BIALogo.png'
+OSCAR_MISSING_IMAGE_URL = 'image_not_found.jpg'
 
 # Address settings
 OSCAR_REQUIRED_ADDRESS_FIELDS = ('first_name', 'last_name', 'line1',

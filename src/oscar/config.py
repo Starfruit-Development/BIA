@@ -23,10 +23,6 @@ class Shop(OscarConfig):
         self.dashboard_app = apps.get_app_config('dashboard')
         self.offer_app = apps.get_app_config('offer')
         self.wishlists_app = apps.get_app_config('wishlists')
-        self.home_app = apps.get_app_config('home')
-
-        self.home_view = get_class('home.views', 'HomeView')
-
 
         self.password_reset_form = get_class('customer.forms', 'PasswordResetForm')
         self.set_password_form = SetPasswordForm
@@ -37,8 +33,7 @@ class Shop(OscarConfig):
         from oscar.views.decorators import login_forbidden
 
         urls = [
-            path('', RedirectView.as_view(url=settings.OSCAR_HOMEPAGE), name='index'),
-            #path('', self.home_view.as_view() , name='main'),
+            path('', RedirectView.as_view(url=settings.OSCAR_HOMEPAGE), name='home'),
             path('catalogue/', self.catalogue_app.urls),
             path('basket/', self.basket_app.urls),
             path('checkout/', self.checkout_app.urls),
@@ -47,7 +42,6 @@ class Shop(OscarConfig):
             path('dashboard/', self.dashboard_app.urls),
             path('offers/', self.offer_app.urls),
             path('wishlists/', self.wishlists_app.urls),
-            path('BIA/', self.home_app.urls),
 
             # Password reset - as we're using Django's default view functions,
             # we can't namespace these urls as that prevents
