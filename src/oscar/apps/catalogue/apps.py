@@ -23,10 +23,12 @@ class CatalogueOnlyConfig(OscarConfig):
         self.category_view = get_class('catalogue.views', 'ProductCategoryView')
         self.range_view = get_class('offer.views', 'RangeDetailView')
 
+
     def get_urls(self):
         urls = super().get_urls()
         urls += [
-            path('', self.catalogue_view.as_view(), name='index'),
+
+            path('', self.catalogue_view.as_view(), name='index'),           
             re_path(
                 r'^(?P<product_slug>[\w-]*)_(?P<pk>\d+)/$',
                 self.detail_view.as_view(), name='detail'),
