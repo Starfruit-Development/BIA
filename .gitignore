@@ -33,7 +33,11 @@ __pycache__
 
 # Docs
 /docs/build/*
-/src/oscar/static/
+/src/oscar/static/oscar/js
+/src/oscar/static/oscar/css
+/src/oscar/static/oscar/webfonts
+/src/oscar/static/oscar/scss
+/src/oscar/static/oscar/README.rst
 *.pdf
 TODO
 venv
