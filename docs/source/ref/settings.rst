@@ -11,7 +11,7 @@ Display settings
 ``OSCAR_SHOP_NAME``
 -------------------
 
-Default: ``'Oscar'``
+Default: ``'BIA'``
 
 The name of your e-commerce shop site.  This is shown as the main logo within
 the default templates.
