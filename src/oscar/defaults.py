@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 OSCAR_SHOP_NAME = 'BIA'
 OSCAR_SHOP_TAGLINE = 'La chispa de la imaginación'
-OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
+OSCAR_HOMEPAGE = reverse_lazy('home:index')
 
 # Dynamic class loading
 OSCAR_DYNAMIC_CLASS_LOADER = 'oscar.core.loading.default_class_loader'
@@ -22,6 +22,7 @@ OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 
 # Currency
 OSCAR_DEFAULT_CURRENCY = 'EUR'
+
 
 # Paths
 OSCAR_IMAGE_FOLDER = 'images/products/%Y/%m/'
@@ -88,7 +89,7 @@ OSCAR_OFFERS_IMPLEMENTED_TYPES = [
 ]
 
 # Hidden Oscar features, e.g. wishlists or reviews
-OSCAR_HIDDEN_FEATURES = []
+OSCAR_HIDDEN_FEATURES = ["reviews","wishlists"]
 
 # Menu structure of the dashboard navigation
 OSCAR_DASHBOARD_NAVIGATION = [
