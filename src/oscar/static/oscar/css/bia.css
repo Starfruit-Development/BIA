@@ -1,0 +1,55 @@
+
+.subTitle {
+    font-weight: bold;
+  }
+  
+  .aboutUsText {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .termsOfUseText {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .footerDiv {
+    background-color: #343a40;
+    text-align: center;
+  }
+  
+  .footerA:link {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footerA:hover {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footerA:visited {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footerP {
+    color: #343a40;
+  }
+  
+  .pruebaInput {
+    width: 50px;
+    display: inline-block;
+  
+  }
+  
+  .pruebaDiv {
+    width: 50px;
+    display: inline-block;
+  
+  }
+  
+  .pruebaBoton{
+    width: auto;
+    display: inline-block;
+  }
