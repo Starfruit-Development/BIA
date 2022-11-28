@@ -1,10 +1,19 @@
-<footer class="container">
-    {% block footer %}
-        {% comment %}
-            Could be used for displaying links to privacy policy, terms of service, etc.
-         {% endcomment %}
+{% load static %}
 
-        <p>Prueba nuestros <a href="../BIA/termsOfUse">términos de uso</a></p>
-             
-    {% endblock %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+{% endblock %}
+
+<footer class="container">
+
+{% block footer %}
+    {% comment %}
+        Could be used for displaying links to privacy policy, terms of service, etc.
+    {% endcomment %}
+
+    <div class="footerDiv">
+        <p class="footerP"> - </p>
+        <p class="footerP"><a class="footerA" href="/BIA/termsOfUse">Términos de uso</a> - <a class="footerA" href="/BIA/aboutUs">Sobre nosotros</a></p>
+    </div>         
+{% endblock %}
 </footer>
