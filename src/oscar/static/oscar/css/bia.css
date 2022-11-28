@@ -37,19 +37,25 @@
     color: #343a40;
   }
   
-  .pruebaInput {
-    width: 50px;
-    display: inline-block;
-  
+  .catalogueInput {
+    width: 90%;
   }
   
-  .pruebaDiv {
-    width: 50px;
-    display: inline-block;
-  
+  .catalogueDiv {
+    width: 90%;
   }
   
-  .pruebaBoton{
-    width: auto;
-    display: inline-block;
+  .catalogueButton{
+    width: 110%;
+    padding: 2px 10px;
+  }
+
+  .catalogueLeft {
+    width: 45%;
+    float: left;
+  }
+
+  .catalogueRight {
+    width: 55%;
+    float: right;
   }
