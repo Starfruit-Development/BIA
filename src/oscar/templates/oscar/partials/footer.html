@@ -1,3 +1,9 @@
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+{% endblock %}
+
 <footer class="container">
 
 {% block footer %}
@@ -5,10 +11,9 @@
         Could be used for displaying links to privacy policy, terms of service, etc.
     {% endcomment %}
 
-    <p></p>
-    <div class="sub-header">
-        <p><a href="/BIA/termsOfUse">Términos de uso</a></p>
-        <p><a href="/BIA/aboutUs">Sobre nosotros</a></p>
+    <div class="footerDiv">
+        <p class="footerP"> - </p>
+        <p class="footerP"><a class="footerA" href="/BIA/termsOfUse">Términos de uso</a> - <a class="footerA" href="/BIA/aboutUs">Sobre nosotros</a></p>
     </div>         
 {% endblock %}
 </footer>
