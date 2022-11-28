@@ -30,7 +30,7 @@
                 {% block breadcrumbs %}{% endblock %}
                 {% block header %}
                     <div class="page-header">
-                        <h1>{% block headertext %}{% endblock %}</h1>
+                        <h1 class="subTitle">{% block headertext %}Biblioteca Ignífuga de Alejandría{% endblock %}</h1>
                     </div>
                 {% endblock %}
                 {% include "oscar/partials/alert_messages.html" %}
@@ -39,23 +39,25 @@
                     {% block subheader %}{% endblock subheader %}
                     {# Div exists for AJAX updates to entire content section #}
                     <div id="content_inner">{% block content %}
-                        
-                        <h1>Biblioteca Ignifuga de Alejandría</h1>
-                        <h2> La chispa de la imaginación </h2>
-                        
-                        
-                        <h3>¿Quíenes somos?</h3>
-                        <p> 
+                                               
+                        <h3 class="subTitle">¿Quíenes somos?</h3>
+                        <p class= "aboutUsText"> 
                             La Bibliteca Ignifuga de Alejandría nace en 2015 con la idea de servir de como punto de adquisición y distrbución de libros, con el paso de los
-                            años se ha ido posicionando como una empresa confiable y segura. Con la aparición del virus desde BIA nacio la posibilidad d
-                            
-                            Nuestro equipo se enorgullece
-                            de ofrecer un servicio util y sencillo para sus clientes de manera que nadie se sentia fuera de lugar a la hora de buscar entretemiento o conocimiento 
+                            años se ha ido posicionando como confiable y segura. Con la aparición del virus desde BIA nacio la necesidad de ofrecer a nuestros 
+                            clientes un servicio que les permmitiera realizar sus pedidos de manera remota y con total seguridad de que sus datos están seguros. De esto 
+                            nace la necesidad de crear nuestro servicio web! 
+
+                            Dentro de esta pagina podrás encontrar todo tipo de libros desde educativos hasta fantasía, en la Bibliteca Ignifuga de Alejandría hay sitio para 
+                            cualquier escrito que busques y en caso de que no tengammos el libro por favor háznolos saber.
                         </p>
 
-                        
-                        
-                        
+                        <h3 class="subTitle"> Contacto </h3>
+                        <ul>
+                            <li>Email: libreríaalejandría@mail.es </li>
+                            <li>Teléfono: +34 638738461 </li>
+                            <li>Dirreción: Paseo de Hammond, nº 16 (Elend, 2º Octante)</li>
+                        </ul>
+
                     {% endblock %}</div>
                 </div>
             </div>
