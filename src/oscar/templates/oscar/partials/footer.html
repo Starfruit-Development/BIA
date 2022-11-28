@@ -1,10 +1,14 @@
 <footer class="container">
-    {% block footer %}
-        {% comment %}
-            Could be used for displaying links to privacy policy, terms of service, etc.
-         {% endcomment %}
 
-        <p>Prueba nuestros <a href="../BIA/termsOfUse">términos de uso</a></p>
-             
-    {% endblock %}
+{% block footer %}
+    {% comment %}
+        Could be used for displaying links to privacy policy, terms of service, etc.
+    {% endcomment %}
+
+    <p></p>
+    <div class="sub-header">
+        <p><a href="../BIA/termsOfUse">Términos de uso</a></p>
+        <p><a href="../BIA/aboutUs">Sobre nosotros</a></p>
+    </div>         
+{% endblock %}
 </footer>
