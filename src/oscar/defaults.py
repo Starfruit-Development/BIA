@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 OSCAR_SHOP_NAME = 'BIA'
 OSCAR_SHOP_TAGLINE = 'La chispa de la imaginación'
-OSCAR_HOMEPAGE = reverse_lazy('catalogue:index')
+OSCAR_HOMEPAGE = reverse_lazy('home:index')
 
 # Dynamic class loading
 OSCAR_DYNAMIC_CLASS_LOADER = 'oscar.core.loading.default_class_loader'
@@ -30,7 +30,7 @@ OSCAR_DELETE_IMAGE_FILES = True
 
 # Copy this image from oscar/static/img to your MEDIA_ROOT folder.
 # It needs to be there so Sorl can resize it.
-OSCAR_MISSING_IMAGE_URL = 'BIALogo.png'
+OSCAR_MISSING_IMAGE_URL = 'image_not_found.jpg'
 
 # Address settings
 OSCAR_REQUIRED_ADDRESS_FIELDS = ('first_name', 'last_name', 'line1',
@@ -89,7 +89,7 @@ OSCAR_OFFERS_IMPLEMENTED_TYPES = [
 ]
 
 # Hidden Oscar features, e.g. wishlists or reviews
-OSCAR_HIDDEN_FEATURES = []
+OSCAR_HIDDEN_FEATURES = ["reviews","wishlists"]
 
 # Menu structure of the dashboard navigation
 OSCAR_DASHBOARD_NAVIGATION = [

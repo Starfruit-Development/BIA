@@ -40,7 +40,13 @@
 
                     {# Div exists for AJAX updates to entire content section #}
                     <div id="content_inner">{% block content %}
-                        <h1>INCIO</h1>
+                        <div style="display: grid; place-items: center;">
+                            <h1>Bienvenido a BIA</h1>
+                            <img src="/static/oscar/img/libroHome.gif" width="230px" height="auto"/>
+                            Utilice la barra de busqueda para encontrar un producto o explore nuestro <a href="{% url 'catalogue:index' %}">catalogo</a>
+                        </div>
+                        
+                        
                       
                         
                     {% endblock %}</div>
