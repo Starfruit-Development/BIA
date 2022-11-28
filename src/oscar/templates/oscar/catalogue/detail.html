@@ -144,15 +144,17 @@
                 <td>{{ av.value_as_html }}</td>
             </tr>
         {% endfor %}
+        <!--
         {% iffeature "reviews" %}
             <tr>
                 <th>{% trans "Number of reviews" %}</th>
                 <td>{{ product.num_approved_reviews }}</td>
             </tr>
         {% endiffeature %}
+        -->
     </table>
     {% endblock %}
-
+    <!--
     {% iffeature "reviews" %}
         {% block product_review %}
         <section>
@@ -186,7 +188,7 @@
         </section>
         {% endblock product_review %}
     {% endiffeature %}
-
+    -->
     {% with recommended_products=product.sorted_recommended_products|slice:":6" %}
         {% if recommended_products %}
             <div class="sub-header">
