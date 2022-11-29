@@ -20,7 +20,7 @@
 
 {% block content %}
 
-    <div class="row">
+    <div class="row justify-content-md-center">
         <div class="col-sm-6 login_form">
             <form id="login_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light" >
                 <h2>{% trans 'Log In' %}</h2>
@@ -30,6 +30,7 @@
                 <button name="login_submit" type="submit" value="Log In" class="btn btn-lg btn-primary" data-loading-text="{% trans "Logging in..." %}">{% trans 'Log In' %}</button>
             </form>
         </div>
+        <!--
         <div class="col-sm-6 register_form">
             <form id="register_form" action="{{ request.get_full_path }}" method="post" class="card card-body bg-light">
                 <h2>{% trans 'Register' %}</h2>
@@ -38,6 +39,7 @@
                 <button name="registration_submit" type="submit" value="Register" class="btn btn-lg btn-primary" data-loading-text="{% trans 'Registering...' %}">{% trans 'Register' %}</button>
             </form>
         </div>
+        -->
     </div>
 
 {% endblock content %}

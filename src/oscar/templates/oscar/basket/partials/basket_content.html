@@ -58,6 +58,7 @@
                                 <p class="availability {{ session.availability.code }}">{{ session.availability.message }}</p>
                             </div>
                             <div class="col-md-3">
+                                <!--Mirar aqui para HU-011-->
                                 <div class="checkout-quantity">
                                     <div class="input-group {% if form.errors %}error{% endif %}">
                                         {% render_field form.quantity class+="form-control" %}
