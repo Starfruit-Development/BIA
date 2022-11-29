@@ -1,0 +1,61 @@
+
+.subTitle {
+    font-weight: bold;
+  }
+  
+  .aboutUsText {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .termsOfUseText {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  
+  .footerDiv {
+    background-color: #343a40;
+    text-align: center;
+  }
+  
+  .footerA:link {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footerA:hover {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footerA:visited {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .footerP {
+    color: #343a40;
+  }
+  
+  .catalogueInput {
+    width: 90%;
+  }
+  
+  .catalogueDiv {
+    width: 90%;
+  }
+  
+  .catalogueButton{
+    width: 110%;
+    padding: 2px 10px;
+  }
+
+  .catalogueLeft {
+    width: 45%;
+    float: left;
+  }
+
+  .catalogueRight {
+    width: 55%;
+    float: right;
+  }

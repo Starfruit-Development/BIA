@@ -1,11 +1,51 @@
 {{% extends "oscar/layout.html" %}
 
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/bia.css" %}" />
+{% endblock %}
+
+{% block layout %}
+    {# Top-horizontal bar with account, notifictions, dashboard links #}
+    {% include "oscar/partials/nav_accounts.html" %}
+
+    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
+    <header class="header container">
+        <div class="page_inner">
+            <div class="row justify-content-between">
+                {% include "oscar/partials/brand.html" %}
+                {# Mini-basket wrapped in a block so some templates can now display it #}
+                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
+            </div>
+        </div>
+        {% block navigation %}
+            {% include "oscar/partials/nav_primary.html" %}
+        {% endblock %}
+    </header>
 
 {% load i18n %}
 {% load product_tags %}
 
 {% block title %}
 {% trans "Offers" %} | {{ block.super }}
+                    {# Div exists for AJAX updates to entire content section #}
+                    <div id="content_inner">{% block content %}
+                        <div style="display: grid; place-items: center;">
+                            <h1>Bienvenido a BIA</h1>
+                            <img src="/static/oscar/img/libroHome.gif" width="230px" height="auto"/>
+                            Utilice la barra de busqueda para encontrar un producto o explore nuestro <a href="{% url 'catalogue:index' %}">catalogo</a>
+                        </div>
+                        
+                        
+                      
+                        
+                    {% endblock %}</div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% include "oscar/partials/footer.html" %}
 {% endblock %}
 
 {% block breadcrumbs %}

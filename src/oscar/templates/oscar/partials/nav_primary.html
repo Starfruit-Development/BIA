@@ -33,7 +33,9 @@
                 <ul class="navbar-nav mr-auto">
                     {% block nav_items %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" href="/catalogue" role="button">Todos los productos</a>
+                            <!--
+                            <a class="nav-link dropdown-toggle" href="% url 'catalogue:index' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {% block browse_store_text %}{% trans "Browse store" %}{% endblock %}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,11 +47,8 @@
                                         <a class="dropdown-item" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
                                     {% endfor %}
                                 {% endif %}
-                                <div class="dropdown-divider"></div>
-                                {% block nav_dropdown_extra_items %}
-                                    <a class="dropdown-item" href="{% url 'offer:list' %}">{% trans "Offers" %}</a>
-                                {% endblock %}
                             </div>
+                            -->
                         </li>
                    {% endblock %}
                </ul>
