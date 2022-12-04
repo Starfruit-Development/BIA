@@ -1,80 +1,30 @@
-{% extends "oscar/base.html" %}
-{% load static %}
+{% extends "oscar/layout.html" %}
 
-{% block styles %}
-    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/bia.css" %}" />
+
+{% load i18n %}
+{% load product_tags %}
+
+{% block title %}
+{% trans "Offers" %} | {{ block.super }}
 {% endblock %}
 
-{% block layout %}
-    {# Top-horizontal bar with account, notifictions, dashboard links #}
-    {% include "oscar/partials/nav_accounts.html" %}
-
-    {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container">
-        <div class="page_inner">
-            <div class="row justify-content-between">
-                {% include "oscar/partials/brand.html" %}
-                {# Mini-basket wrapped in a block so some templates can now display it #}
-                {% block mini_basket %}{% include "oscar/partials/mini_basket.html" %}{% endblock %}
-            </div>
-        </div>
-        {% block navigation %}
-            {% include "oscar/partials/nav_primary.html" %}
-        {% endblock %}
-    </header>
-
-    {# Main content of page - other layout templates may override this block #}
-    {% block content_wrapper %}
-        <div class="container page">
-            <div class="page_inner">
-                {% block breadcrumbs %}{% endblock %}
-                {% block header %}
-                    <div class="page-header">
-                        <h1>{% block headertext %}{% endblock %}</h1>
-                    </div>
-                {% endblock %}
-                {% include "oscar/partials/alert_messages.html" %}
-                {% block subnavigation %}{% endblock %}
-                <div class="content">
-                    {% block subheader %}{% endblock subheader %}
-
-                    {# Div exists for AJAX updates to entire content section #}
-                    <div id="content_inner">{% block content %}
-                        <div style="display: grid; place-items: center;">
-                            <h1>Bienvenido a BIA</h1>
-                            <img src="/static/oscar/img/libroHome.gif" width="230px" height="auto"/>
-                            Utilice la barra de busqueda para encontrar un producto o explore nuestro <a href="{% url 'catalogue:index' %}">catalogo</a>
-                        </div>
-                        
-                        
-                      
-                        
-                    {% endblock %}</div>
-                </div>
-            </div>
-        </div>
-    {% endblock %}
-
-    {% include "oscar/partials/footer.html" %}
+{% block headertext %}
+    {% trans "Bienvenido a BIA" %}
 {% endblock %}
 
+{% block content %}
+    <div style="display: grid; place-items: center;">
+        <h1></h1>
+        <img src="/static/oscar/img/libroHome.gif" width="230px" height="auto"/>
+        <p>Utilice la barra de búsqueda para encontrar un producto o explore nuestro <a href="{% url 'catalogue:index' %}">catálogo</a></p>
+    </div>
 
-{# Local scripts #}
-{% block scripts %}
-    {{ block.super }}
-    <!-- Twitter Bootstrap -->
-    <script src="{% static "oscar/js/bootstrap4/bootstrap.bundle.min.js" %}"></script>
-    <!-- Oscar -->
-    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
-{% endblock %}
-
-{% block extrascripts %}
-    {% include "oscar/partials/extrascripts.html" %}
-    {{ block.super }}
-{% endblock %}
-
-{% block onbodyload %}
-    {{ block.super }}
-    oscar.init();
-{% endblock %}
+        
+    <h2>Libros populares</h2>
+    <ul class="row list-unstyled mx-0">
+        {% for product in products|slice:":8" %}
+            <li class="col-sm-4 col-md-3 col-lg-3">{% render_product product %}</li>
+        {% endfor %}
+    </ul>
+    <hr/>
+{% endblock content %}
