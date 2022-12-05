@@ -19,6 +19,7 @@ class HomeConfig(OscarConfig):
         self.home_view = get_class('home.views', 'HomeView')
         self.termsOfUse_view = get_class('home.views', 'TermsOfUseView')
         self.about_us_view = get_class('home.views', 'AboutUsView')
+        self.order_search_view = get_class('home.views', 'OrderSearchView')
 
 
     def get_urls(self):
@@ -27,5 +28,6 @@ class HomeConfig(OscarConfig):
             path('home', self.home_view.as_view(), name='index'),
             path('aboutUs', self.about_us_view.as_view(), name='aboutUs'),
             path('termsOfUse', self.termsOfUse_view.as_view(), name='termsOfUse'),
+            path('searchOrder',self.order_search_view.as_view(), name="searchOrder")
         ]
         return self.post_process_urls(urls)
