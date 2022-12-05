@@ -12,7 +12,7 @@ DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
-EMAIL_SUBJECT_PREFIX = '[Oscar sandbox] '
+EMAIL_SUBJECT_PREFIX = '[BIA] '
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Use a Sqlite database by default
@@ -371,7 +371,7 @@ from oscar.defaults import *
 # Meta
 # ====
 
-OSCAR_SHOP_TAGLINE = 'Sandbox'
+OSCAR_SHOP_TAGLINE = 'BIA'
 
 OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 OSCAR_ALLOW_ANON_CHECKOUT = True
@@ -383,23 +383,23 @@ OSCAR_ALLOW_ANON_CHECKOUT = True
 # Sample order/line status settings. This is quite simplistic. It's like you'll
 # want to override the set_status method on the order object to do more
 # sophisticated things.
-OSCAR_INITIAL_ORDER_STATUS = 'Pending'
-OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_INITIAL_ORDER_STATUS = 'Pendiente'
+OSCAR_INITIAL_LINE_STATUS = 'Pendiente'
 
 # This dict defines the new order statuses than an order can move to
 OSCAR_ORDER_STATUS_PIPELINE = {
-    'Pending': ('Being processed', 'Cancelled',),
-    'Being processed': ('Complete', 'Cancelled',),
-    'Cancelled': (),
-    'Complete': (),
+    'Pendiente': ('Siendo procesado', 'Cancelado',),
+    'Siendo procesado': ('Completado', 'Cancelado',),
+    'Cancelado': (),
+    'Completado': (),
 }
 
 # This dict defines the line statuses that will be set when an order's status
 # is changed
 OSCAR_ORDER_STATUS_CASCADE = {
-    'Being processed': 'Being processed',
-    'Cancelled': 'Cancelled',
-    'Complete': 'Shipped',
+    'Siendo procesado': 'Siendo procesado',
+    'Cancelado': 'Cancelado',
+    'Completado': 'Enviado',
 }
 
 # Sorl

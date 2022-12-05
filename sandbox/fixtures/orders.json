@@ -1,7 +1,7 @@
 [
 {
     "fields": {
-        "status": "Pending",
+        "status": "Pendiente",
         "billing_address": null,
         "shipping_method": "Free shipping",
         "total_incl_tax": "7.99",
@@ -43,7 +43,7 @@
 {
     "fields": {
         "unit_price_excl_tax": "7.99",
-        "status": "Pending",
+        "status": "Pendiente",
         "stockrecord": 6,
         "partner_sku": "9780553380958",
         "line_price_excl_tax": "7.99",

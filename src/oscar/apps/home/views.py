@@ -103,24 +103,31 @@ class OrderSearchView(FormView):
     form_class = OrderSearchForm
     
     def get_object(self, queryset=None):
-        orderToShow = Order.objects.get(number = self.kwargs['order_number'])
-    
+        number = self.kwargs['order_number']
         email = self.kwargs['guest_email']
-        order = get_object_or_404(self.model, user=None,
-                                  number=self.kwargs['order_number'])
+        orderToShow = get_object_or_404(self.model, user = None,
+                                  number = number)
 
-        if not getattr(order,"guest_email") == email:
+        if not getattr(orderToShow,"guest_email") == email:
             raise http.Http404()
+        if not getattr(orderToShow,"number") == number:
+            raise http.Http404()
+        
         return orderToShow
 
     def form_valid(self, form):
+        number = form.data['order_number']
+        email = form.data['email']
+        
+        orderToShow = get_object_or_404(Order, user=None,
+                                  number=number)
 
-        order = get_object_or_404(Order, user=None,
-                                  number=form.data['order_number'])
-    
+        if not getattr(orderToShow,"guest_email") == email:
+            raise http.Http404()                          
+
         return redirect(reverse_lazy('customer:anon-order',
                         kwargs = {
-                            "order_number": getattr(order,"number"),
-                            "hash": order.verification_hash()
+                            "order_number": getattr(orderToShow,"number"),
+                            "hash": orderToShow.verification_hash()
                         }
          ))
