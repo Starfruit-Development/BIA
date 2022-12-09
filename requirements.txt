@@ -28,3 +28,6 @@ ipython>=7.12,<9
 
 # Country data
 pycountry
+
+# Payment
+django-oscar-paypal>=2.0,<2.1
