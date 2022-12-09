@@ -169,43 +169,6 @@ OSCAR_DASHBOARD_NAVIGATION = [
         ]
     },
     {
-        'label': _('Offers'),
-        'icon': 'fas fa-bullhorn',
-        'children': [
-            {
-                'label': _('Offers'),
-                'url_name': 'dashboard:offer-list',
-            },
-            {
-                'label': _('Vouchers'),
-                'url_name': 'dashboard:voucher-list',
-            },
-            {
-                'label': _('Voucher Sets'),
-                'url_name': 'dashboard:voucher-set-list',
-            },
-
-        ],
-    },
-    {
-        'label': _('Content'),
-        'icon': 'fas fa-folder',
-        'children': [
-            {
-                'label': _('Pages'),
-                'url_name': 'dashboard:page-list',
-            },
-            {
-                'label': _('Email templates'),
-                'url_name': 'dashboard:comms-list',
-            },
-            {
-                'label': _('Reviews'),
-                'url_name': 'dashboard:reviews-list',
-            },
-        ]
-    },
-    {
         'label': _('Reports'),
         'icon': 'fas fa-chart-bar',
         'url_name': 'dashboard:reports-index',
