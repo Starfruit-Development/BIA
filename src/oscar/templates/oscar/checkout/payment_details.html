@@ -18,20 +18,6 @@
 
 {% block payment_details %}
     {% block payment_details_content %}
-        <div class="card card-body bg-light mt-4">
-            <div class="sub-header">
-                <h3>{% trans "PayPal PayFlow Pro" %}</h3>
-            </div>
-            <form method="post" action="{% url 'checkout:preview' %}">
-                {% csrf_token %}
-                <h4>{% trans "Bankcard" %}</h4>
-                {% include "oscar/partials/form_fields.html" with form=bankcard_form %}
-                <h4>{% trans "Billing address" %}</h4>
-                {% include "oscar/partials/form_fields.html" with form=billing_address_form %}
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-large btn-primary">{% trans "Continue" %}</button>
-                </div>
-            </form>
-        </div>
+        
     {% endblock payment_details_content %}
 {% endblock payment_details %}
