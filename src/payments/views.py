@@ -19,9 +19,12 @@ def stripe_config(request):
 
 @csrf_exempt
 def create_checkout_session(request):
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    item_list = create_item_list(request)
+        
     if request.method == 'GET':
         domain_url = 'http://localhost:8000/'
-        stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             # Create new Checkout Session for the order
             # Other optional params include:
@@ -37,13 +40,44 @@ def create_checkout_session(request):
                 cancel_url=domain_url,
                 payment_method_types=['card'],
                 mode='payment',
-                line_items=[
-                    {
-                        'price': 'price_1MDFnWBP34txZVvUmxOX0w2j',
-                        'quantity': 1,
-                    }
-                ]
+                line_items=item_list
             )
             return JsonResponse({'sessionId': checkout_session['id']})
         except Exception as e:
             return JsonResponse({'error': str(e)})
+
+def get_prices_and_products():
+    product_list = stripe.Product.list(limit=100, active = True)['data']
+    price_list = stripe.Price.list(limit=100)['data']
+
+    flag = True
+    while flag:
+        if len(product_list) % 100 == 0:
+            product_list += stripe.Product.list(limit=100, starting_after=product_list[-1], active = True)['data']
+        else:
+            flag = False
+
+    flag = True
+    while flag:
+        if len(price_list) % 100 == 0:
+            price_list += stripe.Price.list(limit=100, starting_after=price_list[-1])['data']
+        else:
+            flag = False
+
+    return [product_list, price_list]
+
+def create_item_list(request):
+    item_list = []
+    product_list, price_list = get_prices_and_products()
+
+    for line in request.basket.all_lines():
+        for product in product_list:
+            if product.name == line.product.get_title():
+                for price in price_list:
+                    if price.product == product.id: 
+                        item_list.append({
+                            'price': price.id,
+                            'quantity': line.quantity
+                        })
+
+    return item_list

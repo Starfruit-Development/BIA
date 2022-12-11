@@ -1,10 +1,6 @@
 {% extends "oscar/checkout/checkout.html" %}
 {% load i18n %}
-
-<head>
-    <title>HTML Meta Tag</title>
-    <meta http-equiv = "refresh" content = "0.1; url = http://localhost:8000/payments" />
- </head>
+{% load static %}
 
 {% block title %}
     {% trans "Payment details" %} | {{ block.super }}
@@ -23,6 +19,18 @@
 
 {% block payment_details %}
     {% block payment_details_content %}
-        <a id="view_preview" href="http://localhost:8000/payments">Si no carga, haga click aquí</a>
+
+        <head>
+            <script src="https://js.stripe.com/v3/"></script>
+            <script src="{% static 'main.js' %}"></script>
+            <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        </head>
+        <body>
+            <section class="section">
+            <div class="container">
+                <button class="btn btn-sm btn-secondary" id="submitBtn">Si no se redirecciona automáticamente, pulse aquí.</button>
+            </div>
+            </section>
+        </body>
     {% endblock payment_details_content %}
 {% endblock payment_details %}
