@@ -123,7 +123,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            location('templates'),
+            location('templates'), 
         ],
         'OPTIONS': {
             'loaders': [
@@ -299,6 +299,9 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.shipping.apps.ShippingDashboardConfig',
     'oscar.apps.home',
 
+    # Local
+    'payments.apps.PaymentsConfig', # new
+
     # 3rd-party apps that Oscar depends on
     'widget_tweaks',
     'haystack',
@@ -313,6 +316,7 @@ INSTALLED_APPS = [
     # 3rd-party apps that the sandbox depends on
     'django_extensions',
     'debug_toolbar',
+
 ]
 
 # Add Oscar's custom auth backend so users can sign in using their email
@@ -432,6 +436,10 @@ SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
 SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=0)
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
+
+# Stripe
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51MD62dBP34txZVvUxYEwwFSOcMqCwhLtjVLlS4LIAsfbKX2oNnYbUADT6JWIMDjKnQ8LfcEJzV858BJkfvWMmb2d00bhcGR25t'
+STRIPE_SECRET_KEY = 'sk_test_51MD62dBP34txZVvU3d6L6Lxyl64jt2ND30QEU17I5VZnnTKHos9Erh1YUfp2IJsimpKeiZLFGeNFwgyd8bBbI3GH00EvvV41y2'
 
 # Try and import local settings which can be used to override any of the above.
 try:
