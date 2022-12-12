@@ -294,7 +294,7 @@ class OrderPlacementMixin(CheckoutSessionMixin):
 
             # status_url is deprecated, see https://github.com/django-oscar/django-oscar/issues/3826
             site = Site.objects.get_current(self.request)
-            ctx['status_url'] = 'http://%s%s' % (site.domain, path)
+            ctx['status_url'] = 'http://%s%s' % ("localhost:8000", path)
         return ctx
 
     # Basket helpers

@@ -56,7 +56,7 @@
 {% if status_url %}
     <tr>
         <td class="content-block">
-            {% absolute_url site.domain status_path as absolute_status_url %}
+            {% absolute_url "localhost:8000" status_path as absolute_status_url %}
             {% blocktrans %}Puede ver el estado del pedido haciendo click <a href="{{ absolute_status_url }}" title="order status">aqui</a>{% endblocktrans %}
         </td>
     </tr>
