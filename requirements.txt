@@ -28,3 +28,6 @@ ipython>=7.12,<9
 
 # Country data
 pycountry
+
+# Payment
+stripe==2.63.0

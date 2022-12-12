@@ -1,5 +1,6 @@
 {% extends "oscar/checkout/checkout.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block title %}
     {% trans "Payment details" %} | {{ block.super }}
@@ -18,13 +19,18 @@
 
 {% block payment_details %}
     {% block payment_details_content %}
-        <p>{% trans "This page needs implementing within your project.  You may want to use one of Oscar's payment gateway libraries:" %}</p>
-        <ul>
-            <li><a href="https://github.com/django-oscar/django-oscar-paypal">django-oscar-paypal</a></li>
-            <li><a href="https://github.com/django-oscar/django-oscar-adyen">django-oscar-adyen</a></li>
-            <li><a href="https://github.com/django-oscar/django-oscar-docdata">django-oscar-docdata</a></li>
-            <li><a href="https://github.com/django-oscar/django-oscar-accounts">django-oscar-accounts</a></li>
-        </ul>
-        <a id="view_preview" href="{% url 'checkout:preview' %}" class="btn btn-primary btn-lg">{% trans "Continue" %}</a>
+
+        <head>
+            <script src="https://js.stripe.com/v3/"></script>
+            <script src="{% static 'main.js' %}"></script>
+            <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+        </head>
+        <body>
+            <section class="section">
+            <div class="container">
+                <button class="btn btn-sm btn-secondary" id="submitBtn">Si no se redirecciona automáticamente, pulse aquí.</button>
+            </div>
+            </section>
+        </body>
     {% endblock payment_details_content %}
 {% endblock payment_details %}

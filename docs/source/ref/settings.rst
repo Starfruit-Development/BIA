@@ -176,12 +176,12 @@ defined as iterable values for the corresponding status.
 
 A sample pipeline (as used in the Oscar sandbox) might look like this::
 
-    OSCAR_INITIAL_ORDER_STATUS = 'Pending'
-    OSCAR_INITIAL_LINE_STATUS = 'Pending'
+    OSCAR_INITIAL_ORDER_STATUS = 'Pendiente'
+    OSCAR_INITIAL_LINE_STATUS = 'Pendiente'
     OSCAR_ORDER_STATUS_PIPELINE = {
-        'Pending': ('Being processed', 'Cancelled',),
-        'Being processed': ('Processed', 'Cancelled',),
-        'Cancelled': (),
+        'Pendiente': ('Siendo procesado', 'Cancelado',),
+        'Siendo procesado': ('Procesado', 'Cancelado',),
+        'Cancelado': (),
     }
 
 ``OSCAR_ORDER_STATUS_CASCADE``

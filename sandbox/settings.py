@@ -12,8 +12,16 @@ DEBUG = env.bool('DEBUG', default=True)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
-EMAIL_SUBJECT_PREFIX = '[Oscar sandbox] '
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_SUBJECT_PREFIX = '[BIA] '
+''' EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' '''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST     = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = 'qlluozbcivkszttb'
+EMAIL_HOST_USER = "labibliotecaignifuga@gmail.com"
+EMAIL_PORT      = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 
 # Use a Sqlite database by default
 DATABASES = {
@@ -115,7 +123,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            location('templates'),
+            location('templates'), 
         ],
         'OPTIONS': {
             'loaders': [
@@ -291,6 +299,9 @@ INSTALLED_APPS = [
     'oscar.apps.dashboard.shipping.apps.ShippingDashboardConfig',
     'oscar.apps.home',
 
+    # Local
+    'payments.apps.PaymentsConfig', # new
+
     # 3rd-party apps that Oscar depends on
     'widget_tweaks',
     'haystack',
@@ -305,6 +316,7 @@ INSTALLED_APPS = [
     # 3rd-party apps that the sandbox depends on
     'django_extensions',
     'debug_toolbar',
+
 ]
 
 # Add Oscar's custom auth backend so users can sign in using their email
@@ -371,7 +383,7 @@ from oscar.defaults import *
 # Meta
 # ====
 
-OSCAR_SHOP_TAGLINE = 'Sandbox'
+OSCAR_SHOP_TAGLINE = 'BIA'
 
 OSCAR_RECENTLY_VIEWED_PRODUCTS = 20
 OSCAR_ALLOW_ANON_CHECKOUT = True
@@ -383,23 +395,23 @@ OSCAR_ALLOW_ANON_CHECKOUT = True
 # Sample order/line status settings. This is quite simplistic. It's like you'll
 # want to override the set_status method on the order object to do more
 # sophisticated things.
-OSCAR_INITIAL_ORDER_STATUS = 'Pending'
-OSCAR_INITIAL_LINE_STATUS = 'Pending'
+OSCAR_INITIAL_ORDER_STATUS = 'Pendiente'
+OSCAR_INITIAL_LINE_STATUS = 'Pendiente'
 
 # This dict defines the new order statuses than an order can move to
 OSCAR_ORDER_STATUS_PIPELINE = {
-    'Pending': ('Being processed', 'Cancelled',),
-    'Being processed': ('Complete', 'Cancelled',),
-    'Cancelled': (),
-    'Complete': (),
+    'Pendiente': ('Siendo procesado', 'Cancelado',),
+    'Siendo procesado': ('Completado', 'Cancelado',),
+    'Cancelado': (),
+    'Completado': (),
 }
 
 # This dict defines the line statuses that will be set when an order's status
 # is changed
 OSCAR_ORDER_STATUS_CASCADE = {
-    'Being processed': 'Being processed',
-    'Cancelled': 'Cancelled',
-    'Complete': 'Shipped',
+    'Siendo procesado': 'Siendo procesado',
+    'Cancelado': 'Cancelado',
+    'Completado': 'Enviado',
 }
 
 # Sorl
@@ -424,6 +436,10 @@ SECURE_SSL_REDIRECT = env.bool('SECURE_SSL_REDIRECT', default=False)
 SECURE_HSTS_SECONDS = env.int('SECURE_HSTS_SECONDS', default=0)
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
+
+# Stripe
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51MD62dBP34txZVvUxYEwwFSOcMqCwhLtjVLlS4LIAsfbKX2oNnYbUADT6JWIMDjKnQ8LfcEJzV858BJkfvWMmb2d00bhcGR25t'
+STRIPE_SECRET_KEY = 'sk_test_51MD62dBP34txZVvU3d6L6Lxyl64jt2ND30QEU17I5VZnnTKHos9Erh1YUfp2IJsimpKeiZLFGeNFwgyd8bBbI3GH00EvvV41y2'
 
 # Try and import local settings which can be used to override any of the above.
 try:
