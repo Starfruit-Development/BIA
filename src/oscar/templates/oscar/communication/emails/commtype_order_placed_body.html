@@ -5,8 +5,7 @@
 <tr>
     <td class="content-block">
         <p xmlns="http://www.w3.org/1999/html">{% trans 'Hello,' %}</p>
-        <p>{% blocktrans with order_number=order.number %}We are pleased to confirm your order {{ order_number }} has been received and
-        will be processed shortly.{% endblocktrans %}</p>
+        <p>{% blocktrans with order_number=order.number %}Su pedido {{ order_number }} ha sido recibido y se va a procesar en breve{% endblocktrans %}</p>
     </td>
 </tr>
 
@@ -57,8 +56,8 @@
 {% if status_url %}
     <tr>
         <td class="content-block">
-            {% absolute_url site.domain status_path as absolute_status_url %}
-            {% blocktrans %}You can view the status of this order by clicking <a href="{{ absolute_status_url }}" title="order status">here</a>{% endblocktrans %}
+            {% absolute_url "localhost:8000" status_path as absolute_status_url %}
+            {% blocktrans %}Puede ver el estado del pedido haciendo click <a href="{{ absolute_status_url }}" title="order status">aqui</a>{% endblocktrans %}
         </td>
     </tr>
 {% endif %}
