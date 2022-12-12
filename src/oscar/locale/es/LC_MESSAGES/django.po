@@ -6030,16 +6030,16 @@ msgid "2. Shipping method"
 msgstr "2. Método de envío"
 
 #: templates/oscar/checkout/nav.html:41 templates/oscar/checkout/nav.html:46
-msgid "3. Payment"
-msgstr "3. Pago"
+msgid "2. Payment"
+msgstr "2. Pago"
 
 #: templates/oscar/checkout/nav.html:53
 msgid "4. Preview"
 msgstr "4. Vista previa"
 
 #: templates/oscar/checkout/nav.html:59
-msgid "5. Confirmation"
-msgstr "5. Confirmación"
+msgid "3. Confirmation"
+msgstr "3. Confirmación"
 
 #: templates/oscar/checkout/payment_details.html:5
 msgid "Payment details"
