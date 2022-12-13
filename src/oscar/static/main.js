@@ -1,7 +1,3 @@
-console.log("Sanity check!");
-
-line_items=
-
 // Get Stripe publishable key
 fetch("/payments/config/")
 .then((result) => { return result.json(); })
